@@ -1,0 +1,14 @@
+web:
+  image: 'gitlab/gitlab-ce:latest'
+  hostname: 'git.mexgatronics.com'
+  environment:
+    GITLAB_OMNIBUS_CONFIG: |
+      external_url 'http://git.mexgatronics.com:88'
+      gitlab_rails['gitlab_shell_ssh_port'] = 2222
+  ports:
+    - '88:88'
+    - '2222:22'
+  volumes:
+    - '/root/Gitlab/config:/etc/gitlab'
+    - '/root/Gitlab/logs:/var/log/gitlab'
+    - '/root/Gitlab/data:/var/opt/gitlab'
